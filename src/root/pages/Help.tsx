@@ -17,8 +17,8 @@ const CreatePost = () => {
           />
           <h2 className="h3-bold md:h2-bold text-left w-full">Pomoc</h2>
           <Link to={"/"}>
-            <div className="w-64 p-4 border rounded-md">
-              <p className="">Powrót do kokpitu →</p>
+            <div className=" p-2 lg:px-4 lg:py-2 border rounded-md">
+              <p className="text-sm whitespace-nowrap">Powrót do kokpitu →</p>
             </div>
           </Link>
           

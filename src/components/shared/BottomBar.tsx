@@ -27,7 +27,7 @@ const BottomBar = () => {
                             isActive && "invert-white"
                             }`}
                         />
-                        <p className='tiny-medium text-light-2'>{link.label}</p>
+                        <p className='tiny-medium text-white'>{link.label}</p>
                         </Link>
                    
                     );

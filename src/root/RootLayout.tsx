@@ -11,7 +11,7 @@ const RootLayout = () => {
       <LeftSidebar />
 
 
-      <section className="flex flex-1 h-full bg-cover" style={{ backgroundImage: "url('/assets/images/bg-sec.svg')" }}>
+      <section className="flex flex-1 h-full">
         <Outlet />
       </section>
 

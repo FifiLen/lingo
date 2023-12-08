@@ -28,23 +28,28 @@ export const sidebarLinks = [
   
   export const bottombarLinks = [
     {
-      imgURL: "/assets/icons/home.svg",
+      imgURL: "/assets/icons/dashboard.svg",
       route: "/",
-      label: "Home",
+      label: "Kokpit",
     },
     {
-      imgURL: "/assets/icons/wallpaper.svg",
+      imgURL: "/assets/icons/mix.svg",
       route: "/explore",
-      label: "Explore",
+      label: "Let's Talk",
     },
     {
-      imgURL: "/assets/icons/bookmark.svg",
+      imgURL: "/assets/icons/rocket.svg",
+      route: "/all-users",
+      label: "Zadania",
+    },
+    {
+      imgURL: "/assets/icons/gear.svg",
       route: "/saved",
-      label: "Saved",
+      label: "Ustawienia",
     },
     {
-      imgURL: "/assets/icons/gallery-add.svg",
+      imgURL: "/assets/icons/question-mark-circled.svg",
       route: "/create-post",
-      label: "Create",
+      label: "Pomoc",
     },
   ];
