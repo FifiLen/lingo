@@ -1,3 +1,4 @@
+import ChatAi from "@/components/ChatAi"
 import { Link } from "react-router-dom"
 
 const LetsTalk = () => {
@@ -20,7 +21,7 @@ const LetsTalk = () => {
         </div>
 
 
-
+       <ChatAi />
       {/*   <PostForm />*/}
       </div>
     </div>
