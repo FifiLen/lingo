@@ -25,25 +25,9 @@ const FormSchema = z.object({
     }),
 })
 
-function giveMessageToServer(message: string) {
-  // Użyj fetch, aby wysłać dane do funkcji serverless
-  fetch('/api/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message }),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Server response:', data);
-      // Tutaj możesz dodatkowo obsłużyć odpowiedź z serwera, jeśli to konieczne
-    })
-    .catch(error => console.error('Error sending data to server:', error));
-}
+
+
+
 
 
 export function TextareaForm() {
@@ -56,28 +40,34 @@ export function TextareaForm() {
 
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    const message = `${JSON.stringify(data, null, 2)}`
-     console.log(message);
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+    const message = data.message;
+  
+    // Przesyłamy wiadomość do OpenAI
+    fetch('/api/openai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
     })
-    giveMessageToServer(message);
+      .then(response => response.json())
+      .then(data => {
+        const openaiResponse = data.response || '';  // Domyślnie ustawiamy pusty ciąg znaków, jeśli brak odpowiedzi
+  
+        console.log('Message from form:', message);
+        console.log('OpenAI response:', openaiResponse);
+  
+        // Tutaj możesz kontynuować z dowolną logiką aplikacji, wykorzystując message i openaiResponse
+        toast({
+          title: "Recived respond",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 overflow-auto">
+              <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+            </pre>
+          ),
+        });
+      })
+      .catch(error => console.error('Error sending data to OpenAI serverless function:', error));
   }
-
-  // function giveMessageToServer(message: string){
-  //   // tutaj umieszczamy funkcję która przekaże dane do serwera
-  //   fetch("http://localhost:8000/api/messages", {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({message}),
-  //     });
-  // }
-
+  
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
