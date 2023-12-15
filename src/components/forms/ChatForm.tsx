@@ -57,7 +57,7 @@ export function TextareaForm() {
   
         // Tutaj możesz kontynuować z dowolną logiką aplikacji, wykorzystując message i openaiResponse
         toast({
-          title: "Recived respond",
+          title: "Recived respond from AI",
           description: (
             <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 overflow-auto">
               <code className="text-white">{JSON.stringify(data, null, 2)}</code>
